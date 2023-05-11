@@ -7,12 +7,14 @@ for (var i = 0; i < buttonNumber; i++) {
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML)
+    makeAnimation(buttonInnerHTML)
   }
 }
 
 document.addEventListener("keypress", function(event){
   
   makeSound(event.key);
+  makeAnimation(event.key);
 });
 
 
@@ -55,4 +57,15 @@ switch (key) {
     snare.play();
     break;
 }
+}
+
+function makeAnimation(currentKey){
+
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function(){
+    activeButton.classList.remove("pressed")
+  }, 100)
+
 }
